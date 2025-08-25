@@ -1,0 +1,50 @@
+# Ensure consistent line endings across platforms
+* text=auto eol=lf
+
+# C# / .NET
+*.cs     text diff=csharp
+*.csproj text
+*.sln    text
+
+# PowerShell
+*.ps1    text eol=crlf
+*.psm1   text eol=crlf
+
+# Bash / Shell
+*.sh     text eol=lf
+
+# Python
+*.py     text diff=python
+
+# Java
+*.java   text diff=java
+
+# JavaScript / TypeScript
+*.js     text
+*.ts     text
+
+# JSON / YAML / XML
+*.json   text
+*.yml    text
+*.yaml   text
+*.xml    text
+
+# Markdown / Docs
+*.md     text
+*.rst    text
+*.txt    text
+
+# Ignore binary files (no diff)
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
+*.zip    binary
+*.tar    binary
+*.gz     binary
+*.7z     binary
+*.exe    binary
+*.dll    binary
+*.pdb    binary
