@@ -1,6 +1,6 @@
 # Aurora API Examples — C# (.NET 8)
 
-[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+![.NET](https://img.shields.io/badge/.NET-8.0-blueviolet?logo=dotnet) ![C#](https://img.shields.io/badge/C%23-10.0-green?logo=csharp)
 
 ## Setup
 ```bash

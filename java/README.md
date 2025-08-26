@@ -1,6 +1,6 @@
 # Aurora API Examples — Java (single-file)
 
-[![Java 17](https://img.shields.io/badge/java-17-orange.svg)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+![Java](https://img.shields.io/badge/Java-11%2B-red?logo=openjdk)
 
 ## Run
 ```bash

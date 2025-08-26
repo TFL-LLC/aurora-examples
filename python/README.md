@@ -1,6 +1,6 @@
 # Aurora API Examples — Python
 
-[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python) ![Requests](https://img.shields.io/badge/requests-2.28%2B-yellow)
 
 ## Prereqs
 - Python 3.9+

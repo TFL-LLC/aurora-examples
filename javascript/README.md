@@ -1,6 +1,6 @@
 # Aurora API Examples — JavaScript (Node 18+)
 
-[![Node.js 18](https://img.shields.io/badge/node.js-18.0-green.svg)](https://nodejs.org/en/blog/release/v18.0.0/)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?logo=node.js)
 
 ## Prereqs
 - Node.js 18+ (uses native `fetch`)

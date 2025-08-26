@@ -1,6 +1,9 @@
 
 # Aurora API Examples — Bash
 
+![Bash](https://img.shields.io/badge/Bash-5%2B-black?logo=gnu-bash) ![curl](https://img.shields.io/badge/curl-7.68%2B-lightgrey?logo=curl)
+
+
 ## Prereqs
 - bash, curl, Python (for safe URL encoding in one-liners)
 

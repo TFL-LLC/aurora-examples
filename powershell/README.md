@@ -1,5 +1,7 @@
 # Aurora API Examples — PowerShell
 
+![PowerShell](https://img.shields.io/badge/PowerShell-7%2B-blue?logo=powershell)
+
 This folder contains working PowerShell examples for interacting with the Aurora API.  
 
 ## Files
