@@ -13,7 +13,7 @@ dotnet run -- query-events "Chiefs"
 
 ```bash
 dotnet run -- query-autocomplete "Taylor Swift"
-dotnet run -- query-tickets <EVENT_ID> USD
+dotnet run -- query-tickets <EVENT_ID>
 
 # Managed
 dotnet run -- managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"

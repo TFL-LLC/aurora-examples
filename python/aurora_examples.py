@@ -113,7 +113,6 @@ sp.set_defaults(func=query_events)
 
 sp = sub.add_parser("query-tickets")
 sp.add_argument("event_id")
-sp.add_argument("currency")
 sp.set_defaults(func=query_tickets)
 
 sp = sub.add_parser("query-autocomplete")
@@ -139,4 +138,5 @@ sp.set_defaults(func=unmanaged_checkout)
 if __name__ == "__main__":
   if TOKEN == "<TOKEN>":
     sys.exit("Set TOKEN env var (export TOKEN=<TOKEN>)")
-  parser.parse_args().func(parser.parse_args())
+  args = parser.parse_args()
+  args.func(args)

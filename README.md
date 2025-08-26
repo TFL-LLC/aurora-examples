@@ -50,7 +50,7 @@ aurora-examples/
 .\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryEvents -SearchText "Chiefs"
 
 # Tickets
-.\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryTickets -EventId "1972578" -Currency USD
+.\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryTickets -EventId "1972578"
 
 # Autocomplete
 .\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryAutocomplete -SearchText "Taylor Swift"
@@ -87,7 +87,7 @@ export ENV=sandbox   # or prod
 # Query
 ./aurora_examples.sh query-events "Chiefs"
 ./aurora_examples.sh query-autocomplete "Taylor Swift"
-./aurora_examples.sh query-tickets <EVENT_ID> USD
+./aurora_examples.sh query-tickets <EVENT_ID>
 
 # Managed checkout
 ./aurora_examples.sh managed-checkout <LISTING_ID> 2 26.00 USD \
@@ -118,7 +118,7 @@ dotnet run --project csharp/AuroraExamples.csproj -- query-events "Chiefs"
 dotnet run --project csharp/AuroraExamples.csproj -- query-autocomplete "Taylor Swift"
 
 # Tickets
-dotnet run --project csharp/AuroraExamples.csproj -- query-tickets <EVENT_ID> USD
+dotnet run --project csharp/AuroraExamples.csproj -- query-tickets <EVENT_ID>
 
 # Managed checkout
 dotnet run --project csharp/AuroraExamples.csproj -- managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"
@@ -146,7 +146,7 @@ export ENV=sandbox
 ```bash
 python aurora_examples.py query-events "Chiefs"
 python aurora_examples.py query-autocomplete "Taylor Swift"
-python aurora_examples.py query-tickets <EVENT_ID> USD
+python aurora_examples.py query-tickets <EVENT_ID>
 
 # Managed
 python aurora_examples.py managed-checkout <LISTING_ID> 2 26.00 USD \
@@ -178,7 +178,7 @@ export ENV=sandbox
 ```bash
 java AuroraExamples query-events "Chiefs"
 java AuroraExamples query-autocomplete "Taylor Swift"
-java AuroraExamples query-tickets <EVENT_ID> USD
+java AuroraExamples query-tickets <EVENT_ID>
 
 # Managed
 java AuroraExamples managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"
@@ -206,7 +206,7 @@ export ENV=sandbox
 ```bash
 node aurora_examples.js query-events "Chiefs"
 node aurora_examples.js query-autocomplete "Taylor Swift"
-node aurora_examples.js query-tickets <EVENT_ID> USD
+node aurora_examples.js query-tickets <EVENT_ID>
 
 # Managed
 node aurora_examples.js managed-checkout <LISTING_ID> 2 26.00 USD \

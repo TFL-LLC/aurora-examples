@@ -8,7 +8,7 @@
 ```bash
 export TOKEN=<TOKEN>
 export ENV=sandbox   # or prod
-````
+```
 
 ## Customer (env variables)
 
@@ -31,7 +31,7 @@ export COUNTRY="US"
 ```bash
 ./aurora_examples.sh query-events "Chiefs"
 ./aurora_examples.sh query-autocomplete "Taylor Swift"
-./aurora_examples.sh query-tickets <EVENT_ID> USD
+./aurora_examples.sh query-tickets <EVENT_ID>
 
 # Managed
 ./aurora_examples.sh managed-checkout <LISTING_ID> 2 26.00 USD

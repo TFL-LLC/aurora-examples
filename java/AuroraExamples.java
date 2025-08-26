@@ -39,8 +39,8 @@ public class AuroraExamples {
         break;
       }
       case "query-tickets": {
-        String eventId = args[1], currency = args[2];
-        System.out.println(get("/Catalog/Events/"+eventId+"/Tickets?currency="+currency));
+        String eventId = args[1];
+        System.out.println(get("/Catalog/Events/"+eventId+"/Tickets));
         break;
       }
       case "query-autocomplete": {

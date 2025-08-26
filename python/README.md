@@ -15,7 +15,7 @@ export ENV=sandbox   # or prod
 ```bash
 python aurora_examples.py query-events "Chiefs"
 python aurora_examples.py query-autocomplete "Taylor Swift"
-python aurora_examples.py query-tickets <EVENT_ID> USD
+python aurora_examples.py query-tickets <EVENT_ID>
 
 # Managed
 python aurora_examples.py managed-checkout <LISTING_ID> 2 26.00 USD \

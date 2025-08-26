@@ -69,8 +69,7 @@ switch (args[0])
     case "query-tickets":
     {
         var eventId = args[1];
-        var currency = args[2];
-        var json = await GetAsync($"/Catalog/Events/{eventId}/Tickets?currency={currency}");
+        var json = await GetAsync($"/Catalog/Events/{eventId}/Tickets");
         Console.WriteLine(json);
         break;
     }

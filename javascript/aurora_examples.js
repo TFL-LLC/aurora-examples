@@ -4,7 +4,7 @@
  *
  * Usage:
  *   TOKEN=<TOKEN> ENV=sandbox node aurora_examples.js query-events "Chiefs"
- *   TOKEN=<TOKEN> ENV=sandbox node aurora_examples.js query-tickets <EVENT_ID> USD
+ *   TOKEN=<TOKEN> ENV=sandbox node aurora_examples.js query-tickets <EVENT_ID>
  *   TOKEN=<TOKEN> ENV=sandbox node aurora_examples.js query-autocomplete "Taylor Swift"
  *
  *   TOKEN=<TOKEN> ENV=sandbox node aurora_examples.js managed-checkout <LISTING_ID> <QTY> <PRICE> <CURRENCY> [--email ... --first ... --last ... --phone ... --address1 ... --address2 ... --city ... --region ... --postal ... --country ... --client-order-id ...]
@@ -109,8 +109,8 @@ async function queryEvents(search) {
   console.log(JSON.stringify(data, null, 2));
 }
 
-async function queryTickets(eventId, currency) {
-  const data = await get(`/Catalog/Events/${eventId}/Tickets?currency=${currency}`);
+async function queryTickets(eventId) {
+  const data = await get(`/Catalog/Events/${eventId}/Tickets`);
   console.log(JSON.stringify(data, null, 2));
 }
 
@@ -199,8 +199,8 @@ async function unmanagedCheckout(listingId, qty, price, currency) {
         await queryEvents(positional[0]);
         break;
       case "query-tickets":
-        if (!positional[0] || !positional[1]) throw new Error("Usage: query-tickets <EVENT_ID> <CURRENCY>");
-        await queryTickets(positional[0], positional[1]);
+        if (!positional[0]) throw new Error("Usage: query-tickets <EVENT_ID>");
+        await queryTickets(positional[0]);
         break;
       case "query-autocomplete":
         if (!positional[0]) throw new Error("Usage: query-autocomplete <SEARCH>");
@@ -226,14 +226,14 @@ Env:
 
 Commands:
   query-events <SEARCH>
-  query-tickets <EVENT_ID> <CURRENCY>
+  query-tickets <EVENT_ID>
   query-autocomplete <SEARCH>
   managed-checkout <LISTING_ID> <QTY> <PRICE> <CURRENCY> [--email ... --first ... --last ... --phone ... --address1 ... --address2 ... --city ... --region ... --postal ... --country ... --client-order-id ...]
   unmanaged-checkout <LISTING_ID> <QTY> <PRICE> <CURRENCY> [same flags]
 
 Examples:
   TOKEN=<TOKEN> node aurora_examples.js query-events "Chiefs"
-  TOKEN=<TOKEN> node aurora_examples.js query-tickets 1972578 USD
+  TOKEN=<TOKEN> node aurora_examples.js query-tickets 1972578
   TOKEN=<TOKEN> node aurora_examples.js query-autocomplete "Taylor Swift"
 
   TOKEN=<TOKEN> node aurora_examples.js managed-checkout <LISTING_ID> 2 26.00 USD --email dev@example.com --first Jane --last Doe --phone "555-555-1234" --address1 "1313 Mockingbird Lane" --city "Kansas City" --region "MO" --postal "64106" --country "US"

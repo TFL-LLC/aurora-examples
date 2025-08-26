@@ -28,7 +28,7 @@ with a valid token from the Aurora Sandbox or Production environment.
    .\Aurora.Examples.ps1 -Token "<<TOKEN>>" -QueryEvents -SearchText "Chiefs"
 
    # Get tickets for an event
-   .\Aurora.Examples.ps1 -Token "<<TOKEN>>" -QueryTickets -EventId "1972578" -Currency USD
+   .\Aurora.Examples.ps1 -Token "<<TOKEN>>" -QueryTickets -EventId "1972578"
 
    # Autocomplete
    .\Aurora.Examples.ps1 -Token "<<TOKEN>>" -QueryAutocomplete -SearchText "Taylor Swift"

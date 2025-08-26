@@ -10,7 +10,7 @@ TOKEN=<TOKEN> ENV=sandbox java AuroraExamples query-events "Chiefs"
 
 ```bash
 java AuroraExamples query-autocomplete "Taylor Swift"
-java AuroraExamples query-tickets <EVENT_ID> USD
+java AuroraExamples query-tickets <EVENT_ID>
 
 # Managed
 java AuroraExamples managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"

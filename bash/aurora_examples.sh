@@ -5,7 +5,7 @@ set -euo pipefail
 # Usage:
 #   export TOKEN=<TOKEN>
 #   ./aurora_examples.sh query-events "Chiefs"
-#   ./aurora_examples.sh query-tickets <EVENT_ID> USD
+#   ./aurora_examples.sh query-tickets <EVENT_ID>
 #   ./aurora_examples.sh query-autocomplete "Taylor Swift"
 #   ./aurora_examples.sh managed-checkout <LISTING_ID> <QTY:int> <PRICE:number> <CURRENCY>
 #   ./aurora_examples.sh unmanaged-checkout <LISTING_ID> <QTY:int> <PRICE:number> <CURRENCY>
