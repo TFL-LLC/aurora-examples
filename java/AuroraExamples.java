@@ -35,17 +35,17 @@ public class AuroraExamples {
     switch (args[0]) {
       case "query-events": {
         var q = enc(args[1]);
-        System.out.println(get("/Catalog/Events?query="+q+"&perPage=10&page=1"));
+        System.out.println(get("/Catalog/Events?query=" + q + "&perPage=10&page=1"));
         break;
       }
       case "query-tickets": {
         String eventId = args[1];
-        System.out.println(get("/Catalog/Events/"+eventId+"/Tickets));
+        System.out.println(get("/Catalog/Events/" + eventId + "/Tickets"));
         break;
       }
       case "query-autocomplete": {
         var q = enc(args[1]);
-        System.out.println(get("/Catalog/Autocomplete?searchText="+q+"&catalogs=event&catalogs=performer&catalogs=venue&catalogs=category"));
+        System.out.println(get("/Catalog/Autocomplete?searchText=" + q + "&catalogs=event&catalogs=performer&catalogs=venue&catalogs=category"));
         break;
       }
       case "managed-checkout": {
@@ -60,15 +60,15 @@ public class AuroraExamples {
 
         String cart = post("/Cart", "{\"items\":[]}");
         String cartId = cart.replaceAll(".*\"id\"\\s*:\\s*\"([^\"]+)\".*", "$1");
-        post("/Cart/"+cartId+"/Items", String.format("{\"listingId\":\"%s\",\"quantity\":%d,\"currencyType\":\"%s\",\"price\":%s}", listingId, qty, currency, Double.toString(price)));
+        post("/Cart/" + cartId + "/Items", String.format("{\"listingId\":\"%s\",\"quantity\":%d,\"currencyType\":\"%s\",\"price\":%s}", listingId, qty, currency, Double.toString(price)));
 
-        String customer = "{\"firstName\":\""+(first==null?"First":first)+"\",\"lastName\":\""+(last==null?"Last":last)+"\",\"email\":\""+(email==null?"dev@example.com":email)+"\""
-          + (phone!=null? ",\"phoneNumber\":\""+phone+"\"" : "")
-          + (a1!=null && !a1.isBlank() ? ",\"address\":{\"address1\":\""+a1+"\",\"address2\":\""+(a2==null?"":a2)+"\",\"city\":\""+city+"\",\"region\":\""+region+"\",\"postalCode\":\""+postal+"\",\"country\":\""+country+"\"}" : "")
+        String customer = "{\"firstName\":\"" + (first==null?"First":first) + "\",\"lastName\":\"" + (last==null?"Last":last) + "\",\"email\":\"" + (email==null?"dev@example.com":email) + "\""
+          + (phone!=null? ",\"phoneNumber\":\"" + phone + "\"" : "")
+          + (a1!=null && !a1.isBlank() ? ",\"address\":{\"address1\":\"" + a1 + "\",\"address2\":\"" + (a2==null?"":a2) + "\",\"city\":\"" + city + "\",\"region\":\"" + region + "\",\"postalCode\":\"" + postal + "\",\"country\":\"" + country + "\"}" : "")
           + "}";
 
-        String body = "{\"customer\":"+customer+"}";
-        System.out.println(post("/Cart/"+cartId+"/Checkout", body));
+        String body = "{\"customer\":" + customer + "}";
+        System.out.println(post("/Cart/" + cartId + "/Checkout", body));
         break;
       }
       case "unmanaged-checkout": {
@@ -80,12 +80,12 @@ public class AuroraExamples {
         String phone = args.length>8?args[8]:null, a1=args.length>9?args[9]:null, a2=args.length>10?args[10]:null;
         String city=args.length>11?args[11]:null, region=args.length>12?args[12]:null, postal=args.length>13?args[13]:null, country=args.length>14?args[14]:null;
 
-        String customer = "{\"firstName\":\""+(first==null?"First":first)+"\",\"lastName\":\""+(last==null?"Last":last)+"\",\"email\":\""+(email==null?"dev@example.com":email)+"\""
-          + (phone!=null? ",\"phoneNumber\":\""+phone+"\"" : "")
-          + (a1!=null && !a1.isBlank() ? ",\"address\":{\"address1\":\""+a1+"\",\"address2\":\""+(a2==null?"":a2)+"\",\"city\":\""+city+"\",\"region\":\""+region+"\",\"postalCode\":\""+postal+"\",\"country\":\""+country+"\"}" : "")
+        String customer = "{\"firstName\":\"" + (first==null?"First":first) + "\",\"lastName\":\"" + (last==null?"Last":last) + "\",\"email\":\"" + (email==null?"dev@example.com":email) + "\""
+          + (phone!=null? ",\"phoneNumber\":\"" + phone + "\"" : "")
+          + (a1!=null && !a1.isBlank() ? ",\"address\":{\"address1\":\"" + a1 + "\",\"address2\":\"" + (a2==null?"":a2) + "\",\"city\":\"" + city + "\",\"region\":\"" + region + "\",\"postalCode\":\"" + postal + "\",\"country\":\"" + country + "\"}" : "")
           + "}";
 
-        String body = "{\"customer\":"+customer+",\"shoppingCart\":{\"items\":[{\"listingId\":\""+listingId+"\",\"quantity\":"+qty+",\"currencyType\":\""+currency+"\",\"price\":"+Double.toString(price)+"}]}}";
+        String body = "{\"customer\":" + customer + ",\"shoppingCart\":{\"items\":[{\"listingId\":\"" + listingId + "\",\"quantity\":" + qty + ",\"currencyType\":\"" + currency + "\",\"price\":" + Double.toString(price) + "}]}}";
         System.out.println(post("/Cart/Checkout", body));
         break;
       }

@@ -6,18 +6,18 @@ dotnet new console -n AuroraExamples
 # Replace Program.cs with the one in this folder
 export TOKEN=<TOKEN>
 export ENV=sandbox   # or prod
-dotnet run -- query-events "Chiefs"
+dotnet run --project csharp/AuroraExamples.csproj -- query-events "Chiefs"
 ```
 
 ## Examples
 
 ```bash
-dotnet run -- query-autocomplete "Taylor Swift"
-dotnet run -- query-tickets <EVENT_ID>
+dotnet run --project csharp/AuroraExamples.csproj -- query-autocomplete "Taylor Swift"
+dotnet run --project csharp/AuroraExamples.csproj -- query-tickets <EVENT_ID>
 
 # Managed
-dotnet run -- managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"
+dotnet run --project csharp/AuroraExamples.csproj -- managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"
 
 # Unmanaged
-dotnet run -- unmanaged-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe
+dotnet run --project csharp/AuroraExamples.csproj -- unmanaged-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe
 ```

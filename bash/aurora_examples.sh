@@ -90,8 +90,7 @@ PY
 
 query_tickets() {
   local event_id="$1"
-  local currency="${2:-USD}"
-  curl_get "/Catalog/Events/${event_id}/Tickets?currency=${currency}"
+  curl_get "/Catalog/Events/${event_id}/Tickets"
 }
 
 query_autocomplete() {

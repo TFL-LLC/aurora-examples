@@ -51,7 +51,7 @@ def query_events(args):
     print(json.dumps(_get(f"/Catalog/Events?query={q}&perPage=10&page=1"), indent=2))
 
 def query_tickets(args):
-    print(json.dumps(_get(f"/Catalog/Events/{args.event_id}/Tickets?currency={args.currency}"), indent=2))
+    print(json.dumps(_get(f"/Catalog/Events/{args.event_id}/Tickets"), indent=2))
 
 def query_autocomplete(args):
     q = urllib.parse.quote(args.search)
