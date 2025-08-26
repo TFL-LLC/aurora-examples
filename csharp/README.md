@@ -1,5 +1,7 @@
 # Aurora API Examples — C# (.NET 8)
 
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
 ## Setup
 ```bash
 dotnet new console -n AuroraExamples
