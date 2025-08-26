@@ -26,8 +26,8 @@ $COUNTRY    = "US"
 $base    = "https://$ENV.tflapis.com"
 $hdrs    = @{ Authorization = "Bearer $TOKEN" }
 $events  = Invoke-RestMethod -Headers $hdrs -Uri "$base/Catalog/Events?query=$([uri]::EscapeDataString($SEARCH))&perPage=1&page=1"
-$event   = $events.records[0]
-$eventId = $event.id
+$eventRecord   = $events.records[0]
+$eventId = $eventRecord.id
 Write-Host "Using EventId: $eventId" -ForegroundColor Cyan
 .\aurora_examples.ps1 -Token $TOKEN -Env $ENV -QueryTickets -EventId $eventId
 
