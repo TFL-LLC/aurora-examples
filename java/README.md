@@ -5,7 +5,9 @@
 ## Run
 ```bash
 javac AuroraExamples.java
-TOKEN=<TOKEN> ENV=sandbox java AuroraExamples query-events "Chiefs"
+export TOKEN=<TOKEN>
+export ENV=sandbox   # or prod
+java AuroraExamples query-events "Chiefs"
 ```
 
 ## Examples
@@ -18,5 +20,5 @@ java AuroraExamples query-tickets <EVENT_ID>
 java AuroraExamples managed-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234" "1313 Mockingbird Lane" "" "Kansas City" "MO" "64106" "US"
 
 # Unmanaged
-java AuroraExamples unmanaged-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe
+java AuroraExamples unmanaged-checkout <LISTING_ID> 2 26.00 USD dev@example.com Jane Doe "555-555-1234"
 ```
