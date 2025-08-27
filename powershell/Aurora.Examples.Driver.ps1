@@ -1,7 +1,7 @@
 # --- One-time vars ---
 $TOKEN   = "<TOKEN>"   # paste your sandbox token
-$ENV     = "sandbox"                                # default is sandbox; set "prod" to test prod
-$SEARCH  = "Chiefs"                                 # change to a term that exists in your catalog
+$ENV     = "sandbox"   # default is sandbox; set "prod" to test prod
+$SEARCH  = "Chiefs"    # change to a term that exists in your catalog
 
 # Customer for checkout samples
 $EMAIL      = "test@example.com"
@@ -19,7 +19,7 @@ $COUNTRY    = "US"
 
 # ------------------------
 # Query events
-.\aurora_examples.ps1 -Token $TOKEN -Env $ENV -QueryEvents -SearchText $SEARCH
+.\Aurora.Examples.ps1 -Token $TOKEN -Env $ENV -QueryEvents -SearchText $SEARCH
 
 # ------------------------
 # Query tickets (auto-pick first matching event, then tickets)
@@ -29,11 +29,11 @@ $events  = Invoke-RestMethod -Headers $hdrs -Uri "$base/Catalog/Events?query=$([
 $eventRecord   = $events.records[0]
 $eventId = $eventRecord.id
 Write-Host "Using EventId: $eventId" -ForegroundColor Cyan
-.\aurora_examples.ps1 -Token $TOKEN -Env $ENV -QueryTickets -EventId $eventId
+.\Aurora.Examples.ps1 -Token $TOKEN -Env $ENV -QueryTickets -EventId $eventId
 
 # ------------------------
 # Query autocomplete
-.\aurora_examples.ps1 -Token $TOKEN -Env $ENV -QueryAutocomplete -SearchText $SEARCH
+.\Aurora.Examples.ps1 -Token $TOKEN -Env $ENV -QueryAutocomplete -SearchText $SEARCH
 
 # ------------------------
 # Discover a listing for the first matched event
@@ -46,7 +46,7 @@ $currencyType = $listing.currencyType
 Write-Host "Using ListingId: $listingId with Price $price" -ForegroundColor Cyan
 
 # Managed checkout via your script
-.\aurora_examples.ps1 -Token $TOKEN -Env $ENV -ManagedCheckout `
+.\Aurora.Examples.ps1 -Token $TOKEN -Env $ENV -ManagedCheckout `
   -ListingId $listingId -Quantity $quantity -Price $price -Currency $currencyType `
   -Email $EMAIL -FirstName $FIRSTNAME -LastName $LASTNAME -PhoneNumber $PHONENUM `
   -Address1 $ADDR1 -Address2 $ADDR2 -City $CITY -Region $REGION -PostalCode $POSTAL -Country $COUNTRY
@@ -62,7 +62,7 @@ $currencyType = $listing.currencyType
 Write-Host "Using ListingId: $listingId with Price $price" -ForegroundColor Cyan
 
 # Unmanaged checkout via your script
-.\aurora_examples.ps1 -Token $TOKEN -Env $ENV -UnmanagedCheckout `
+.\Aurora.Examples.ps1 -Token $TOKEN -Env $ENV -UnmanagedCheckout `
   -ListingId $listingId -Quantity $quantity -Price $price -Currency $currencyType `
   -Email $EMAIL -FirstName $FIRSTNAME -LastName $LASTNAME -PhoneNumber $PHONENUM `
   -Address1 $ADDR1 -Address2 $ADDR2 -City $CITY -Region $REGION -PostalCode $POSTAL -Country $COUNTRY

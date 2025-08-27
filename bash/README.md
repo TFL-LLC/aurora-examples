@@ -5,7 +5,7 @@
 
 
 ## Prereqs
-- bash, curl, Python (for safe URL encoding in one-liners)
+- bash, curl, jq (for safe URL encoding)
 
 ## Setup
 ```bash

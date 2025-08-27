@@ -11,21 +11,21 @@
 
 .EXAMPLES
   # Query events (sandbox default)
-  .\aurora_examples.ps1 -Token "<TOKEN>" -QueryEvents -SearchText "Chiefs"
+  .\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryEvents -SearchText "Chiefs"
 
   # Tickets for an event
-  .\aurora_examples.ps1 -Token "<TOKEN>" -QueryTickets -EventId "1972578"
+  .\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryTickets -EventId "1972578"
 
   # Autocomplete across catalogs
-  .\aurora_examples.ps1 -Token "<TOKEN>" -QueryAutocomplete -SearchText "Taylor Swift"
+  .\Aurora.Examples.ps1 -Token "<TOKEN>" -QueryAutocomplete -SearchText "Taylor Swift"
 
   # Managed checkout flow
-  .\aurora_examples.ps1 -Token "<TOKEN>" -ManagedCheckout `
+  .\Aurora.Examples.ps1 -Token "<TOKEN>" -ManagedCheckout `
     -ListingId "ABC123" -Quantity 2 -Currency USD `
     -Email "test@example.com" -FirstName "Jane" -LastName "Doe"
 
   # Unmanaged checkout flow
-  .\aurora_examples.ps1 -Token "<TOKEN>" -UnmanagedCheckout `
+  .\Aurora.Examples.ps1 -Token "<TOKEN>" -UnmanagedCheckout `
     -ListingId "ABC123" -Quantity 2 -Currency USD `
     -Email "test@example.com" -FirstName "Jane" -LastName "Doe"
 #>

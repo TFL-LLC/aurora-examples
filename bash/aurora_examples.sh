@@ -20,6 +20,17 @@ set -euo pipefail
 ENVIRONMENT="${ENV:-sandbox}"
 BASE="https://${ENVIRONMENT}.tflapis.com"
 
+# Require jq (used for URL-encoding and JSON parsing)
+require_jq() {
+  if ! command -v jq >/dev/null 2>&1; then
+    echo "ERROR: 'jq' is required. Install it, e.g.: sudo apt-get install -y jq" >&2
+    exit 1
+  fi
+}
+
+# URL-encode using jq
+urlencode() { jq -rn --arg x "$1" '$x|@uri'; }
+
 require_token() {
   if [[ -z "${TOKEN:-}" ]]; then
     echo "ERROR: TOKEN env var is required (export TOKEN=<TOKEN>)" >&2
@@ -81,11 +92,10 @@ JSON
 }
 
 query_events() {
-  local q="$1"
-  curl_get "/Catalog/Events?query=$(python - <<PY
-import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))
-PY
-"$q")&perPage=10&page=1"
+  require_jq
+  local q_enc
+  q_enc="$(urlencode "$1")"
+  curl_get "/Catalog/Events?query=${q_enc}&perPage=10&page=1"
 }
 
 query_tickets() {
@@ -94,24 +104,24 @@ query_tickets() {
 }
 
 query_autocomplete() {
-  local q="$1"
-  # repeated catalogs
-  curl_get "/Catalog/Autocomplete?searchText=$(python - <<PY
-import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))
-PY
-"$q")&catalogs=event&catalogs=performer&catalogs=venue&catalogs=category"
+  require_jq
+  local q_enc
+  q_enc="$(urlencode "$1")"
+  curl_get "/Catalog/Autocomplete?searchText=${q_enc}&catalogs=event&catalogs=performer&catalogs=venue&catalogs=category"
 }
 
 managed_checkout() {
   local listing_id="$1"; local qty="$2"; local price="$3"; local currency="$4"
   # 1) Create cart
   cart_json='{"items":[]}'
-  cart=$(curl_post_json "/Cart" "$cart_json")
-  cart_id=$(python - <<PY
-import json,sys; d=json.load(sys.stdin); print(d.get("id",""))
-PY
-<<<"$cart")
-  [[ -z "$cart_id" ]] && (echo "ERROR: No cart id returned"; echo "$cart" >&2; exit 1)
+  require_jq
+  cart="$(curl_post_json "/Cart" "$cart_json")"
+  cart_id="$(jq -r '.id // empty' <<<"$cart")"
+  if [[ -z "$cart_id" ]]; then
+    echo "ERROR: No cart id returned" >&2
+    echo "$cart" >&2
+    exit 1
+  fi
 
   # 2) Add item (single object body)
   add_body=$(cat <<JSON
