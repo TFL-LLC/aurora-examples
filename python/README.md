@@ -27,5 +27,6 @@ python aurora_examples.py managed-checkout <LISTING_ID> 2 26.00 USD \
 
 # Unmanaged
 python aurora_examples.py unmanaged-checkout <LISTING_ID> 2 26.00 USD \
-  --email dev@example.com --first-name Jane --last-name Doe
+  --email dev@example.com --first-name Jane --last-name Doe \
+  --phone "555-555-1234"
 ```
