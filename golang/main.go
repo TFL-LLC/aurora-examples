@@ -303,17 +303,21 @@ func parseCheckoutFlags(name string, args []string) (CheckoutFlags, []string, er
 }
 
 func managedCheckout(client *APIClient, args []string) {
-	flags, positionals, err := parseCheckoutFlags("managed-checkout", args)
+	// Go's standard flag package stops parsing flags once it encounters the first
+	// non-flag argument. Our CLI expects the 4 required positional args first and
+	// then optional flags afterwards, so we split them explicitly.
+	if len(args) < 4 {
+		dieUsage("managed-checkout <listing_id> <quantity> <price> <currency> [flags...]")
+	}
+	listingID := args[0]
+	qty := args[1]
+	price := args[2]
+	currency := args[3]
+
+	flags, _, err := parseCheckoutFlags("managed-checkout", args[4:])
 	if err != nil {
 		dieUsage("managed-checkout <listing_id> <quantity> <price> <currency> [flags...]")
 	}
-	if len(positionals) < 4 {
-		dieUsage("managed-checkout <listing_id> <quantity> <price> <currency> [flags...]")
-	}
-	listingID := positionals[0]
-	qty := positionals[1]
-	price := positionals[2]
-	currency := positionals[3]
 
 	// 1) Create cart
 	cartObj := must(client.PostJSON("/Cart", map[string]any{"items": []any{}})).(map[string]any)
@@ -351,17 +355,19 @@ func managedCheckout(client *APIClient, args []string) {
 }
 
 func unmanagedCheckout(client *APIClient, args []string) {
-	flags, positionals, err := parseCheckoutFlags("unmanaged-checkout", args)
+	// Same positional-then-flags convention as managed-checkout.
+	if len(args) < 4 {
+		dieUsage("unmanaged-checkout <listing_id> <quantity> <price> <currency> [flags...]")
+	}
+	listingID := args[0]
+	qty := mustInt(args[1])
+	price := mustFloat(args[2])
+	currency := args[3]
+
+	flags, _, err := parseCheckoutFlags("unmanaged-checkout", args[4:])
 	if err != nil {
 		dieUsage("unmanaged-checkout <listing_id> <quantity> <price> <currency> [flags...]")
 	}
-	if len(positionals) < 4 {
-		dieUsage("unmanaged-checkout <listing_id> <quantity> <price> <currency> [flags...]")
-	}
-	listingID := positionals[0]
-	qty := mustInt(positionals[1])
-	price := mustFloat(positionals[2])
-	currency := positionals[3]
 
 	customer, err := flags.BuildCustomer()
 	if err != nil {
