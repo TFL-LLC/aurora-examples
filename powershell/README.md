@@ -23,7 +23,7 @@ This folder contains working PowerShell examples for interacting with the Aurora
 
 with a valid token from the Aurora Sandbox or Production environment.
 
-2. **Run queries**
+1. **Run queries**
 
    ```powershell
    # Search events
@@ -36,7 +36,7 @@ with a valid token from the Aurora Sandbox or Production environment.
    .\Aurora.Examples.ps1 -Token "<<TOKEN>>" -QueryAutocomplete -SearchText "Taylor Swift"
    ```
 
-3. **Managed checkout**
+1. **Managed checkout**
 
    The managed flow creates a cart, adds tickets, sets customer info, and performs checkout:
 
@@ -48,7 +48,7 @@ with a valid token from the Aurora Sandbox or Production environment.
      -Address1 "1313 Mockingbird Lane" -City "Kansas City" -Region "MO" -PostalCode "64106" -Country "US"
    ```
 
-4. **Unmanaged checkout**
+1. **Unmanaged checkout**
 
    The unmanaged flow checks out in one call with customer and tickets:
 
@@ -60,7 +60,7 @@ with a valid token from the Aurora Sandbox or Production environment.
      -Address1 "1313 Mockingbird Lane" -City "Kansas City" -Region "MO" -PostalCode "64106" -Country "US"
    ```
 
-5. **Driver script**
+1. **Driver script**
 
    To run all queries + managed and unmanaged flows in sequence:
 
@@ -70,6 +70,6 @@ with a valid token from the Aurora Sandbox or Production environment.
 
 ## Notes
 
-* Default environment is **sandbox**; use `-Env prod` for production.
-* `Price` is **required** for both managed and unmanaged checkouts.
-* If you supply an address, all fields except `Address2` must be provided.
+- Default environment is **sandbox**; use `-Env prod` for production.
+- `Price` is **required** for both managed and unmanaged checkouts.
+- If you supply an address, all fields except `Address2` must be provided.

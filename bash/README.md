@@ -3,11 +3,12 @@
 
 ![Bash](https://img.shields.io/badge/Bash-5%2B-black?logo=gnu-bash) ![curl](https://img.shields.io/badge/curl-7.68%2B-lightgrey?logo=curl)
 
-
 ## Prereqs
+
 - bash, curl, jq (for safe URL encoding)
 
 ## Setup
+
 ```bash
 export TOKEN=<TOKEN>
 export ENV=sandbox   # or prod

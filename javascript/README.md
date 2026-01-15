@@ -3,9 +3,11 @@
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?logo=node.js)
 
 ## Prereqs
+
 - Node.js 18+ (uses native `fetch`)
 
 ## Setup
+
 ```bash
 export TOKEN=<TOKEN>
 export ENV=sandbox   # or prod
@@ -32,6 +34,6 @@ node aurora_examples.js unmanaged-checkout <LISTING_ID> 2 26.00 USD \
 
 ## Notes
 
-* Default environment is **sandbox**; set `ENV=prod` for production.
-* `price` is **required**.
-* If any address field is provided, then **address1, city, region, postal, country** are all required (address2 optional).
+- Default environment is **sandbox**; set `ENV=prod` for production.
+- `price` is **required**.
+- If any address field is provided, then **address1, city, region, postal, country** are all required (address2 optional).

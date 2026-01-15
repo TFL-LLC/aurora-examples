@@ -12,6 +12,7 @@ We welcome improvements, fixes, and new examples.
    Click the **Fork** button on the top-right of the page.
 
 2. **Clone your fork**  
+
    ```bash
    git clone https://github.com/<your-username>/aurora-examples.git
    cd aurora-examples

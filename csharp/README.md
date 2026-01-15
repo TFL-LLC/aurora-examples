@@ -3,6 +3,7 @@
 ![.NET](https://img.shields.io/badge/.NET-8.0-blueviolet?logo=dotnet) ![C#](https://img.shields.io/badge/C%23-10.0-green?logo=csharp)
 
 ## Setup
+
 ```bash
 dotnet new console -n AuroraExamples
 # Replace Program.cs with the one in this folder

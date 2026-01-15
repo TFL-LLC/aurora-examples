@@ -127,7 +127,6 @@ param(
 
 # ---- Setup ----
 $Base    = "https://$Env.tflapis.com"
-$Headers = @{ Authorization = "Bearer $Token" }
 
 function Write-Title([string]$text) { Write-Host "`n=== $text ===" -ForegroundColor Cyan }
 
@@ -316,7 +315,7 @@ function Set-AuroraCartCustomer {
   Invoke-Aurora -Method POST -Path "/Cart/$CartId/Customer" -Body $customer
 }
 
-function Checkout-AuroraManaged {
+function Submit-AuroraManaged {
   param(
     [Parameter(Mandatory)][string]$CartId
   )
@@ -334,7 +333,7 @@ function Checkout-AuroraManaged {
 
 # ---- Unmanaged checkout flow (single call) ----
 
-function Checkout-AuroraUnmanaged {
+function Submit-AuroraUnmanaged {
   param(
     [Parameter(Mandatory)][string]$ListingId,
     [Parameter(Mandatory)][int]$Quantity,
@@ -398,7 +397,7 @@ switch ($PSCmdlet.ParameterSetName) {
   
     Add-AuroraCartItem -CartId $cartId -ListingId $ListingId -Quantity $Quantity -Price $Price -Currency $Currency | Out-Null
     
-    $order = Checkout-AuroraManaged -CartId $cartId
+    $order = Submit-AuroraManaged -CartId $cartId
     $order | ConvertTo-Json -Depth 10
     break
   }
@@ -407,7 +406,7 @@ switch ($PSCmdlet.ParameterSetName) {
     if (-not $ListingId) { throw "Unmanaged checkout requires -ListingId." }
     if (-not $PSBoundParameters.ContainsKey('Price')) { throw "Unmanaged checkout requires -Price." }
   
-    $order = Checkout-AuroraUnmanaged `
+    $order = Submit-AuroraUnmanaged `
                 -ListingId $ListingId `
                 -Quantity  $Quantity `
                 -Price     $Price `

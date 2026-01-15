@@ -3,6 +3,7 @@
 ![Java](https://img.shields.io/badge/Java-11%2B-red?logo=openjdk)
 
 ## Run
+
 ```bash
 javac AuroraExamples.java
 export TOKEN=<TOKEN>

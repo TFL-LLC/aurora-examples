@@ -3,10 +3,12 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python) ![Requests](https://img.shields.io/badge/requests-2.28%2B-yellow)
 
 ## Prereqs
+
 - Python 3.9+
 - `pip install requests`
 
 ## Setup
+
 ```bash
 export TOKEN=<TOKEN>
 export ENV=sandbox   # or prod
