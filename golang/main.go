@@ -282,9 +282,14 @@ func parseCheckoutFlags(name string, args []string) (CheckoutFlags, []string, er
 	fs.SetOutput(io.Discard)
 
 	var f CheckoutFlags
+	// Back-compat aliases (some samples use shorter flag names)
+	var firstAlias string
+	var lastAlias string
 	fs.StringVar(&f.Email, "email", os.Getenv("EMAIL"), "Customer email (or env EMAIL)")
 	fs.StringVar(&f.FirstName, "first-name", os.Getenv("FIRST_NAME"), "Customer first name (or env FIRST_NAME)")
+	fs.StringVar(&firstAlias, "first", "", "Alias for --first-name")
 	fs.StringVar(&f.LastName, "last-name", os.Getenv("LAST_NAME"), "Customer last name (or env LAST_NAME)")
+	fs.StringVar(&lastAlias, "last", "", "Alias for --last-name")
 	fs.StringVar(&f.Phone, "phone", os.Getenv("PHONE"), "Customer phone (or env PHONE)")
 
 	fs.StringVar(&f.Address1, "address1", os.Getenv("ADDRESS1"), "Address line 1 (or env ADDRESS1)")
@@ -298,6 +303,13 @@ func parseCheckoutFlags(name string, args []string) (CheckoutFlags, []string, er
 
 	if err := fs.Parse(args); err != nil {
 		return CheckoutFlags{}, nil, err
+	}
+	// Apply aliases if the canonical form wasn't set.
+	if strings.TrimSpace(f.FirstName) == "" && strings.TrimSpace(firstAlias) != "" {
+		f.FirstName = firstAlias
+	}
+	if strings.TrimSpace(f.LastName) == "" && strings.TrimSpace(lastAlias) != "" {
+		f.LastName = lastAlias
 	}
 	return f, fs.Args(), nil
 }
@@ -316,6 +328,7 @@ func managedCheckout(client *APIClient, args []string) {
 
 	flags, _, err := parseCheckoutFlags("managed-checkout", args[4:])
 	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
 		dieUsage("managed-checkout <listing_id> <quantity> <price> <currency> [flags...]")
 	}
 
@@ -366,6 +379,7 @@ func unmanagedCheckout(client *APIClient, args []string) {
 
 	flags, _, err := parseCheckoutFlags("unmanaged-checkout", args[4:])
 	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
 		dieUsage("unmanaged-checkout <listing_id> <quantity> <price> <currency> [flags...]")
 	}
 

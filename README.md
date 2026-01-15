@@ -171,7 +171,7 @@ go run . managed-checkout <LISTING_ID> 2 26.00 USD \
 
 # Unmanaged checkout
 go run . unmanaged-checkout <LISTING_ID> 2 26.00 USD \
-  --email dev@example.com --first Jane --last Doe
+  --email dev@example.com --first Jane --last Doe --phone "555-555-1234"
 ```
 
 ---
